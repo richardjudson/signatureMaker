@@ -6,21 +6,13 @@ To create package documentation
 4. run R CMD Rd2pdf <packagename>
 
 
-adding to the remote bitbucket ...
-
-git config --global user.name "Richard Judson"
-git config --global user.email "judson.richard@epa.gov"
-
-git clone ssh://git@ncct-bitbucket.epa.gov:7999/sig/signaturemaker.git
-
-cd existing-project
+echo "# signatureMaker" >> README.md
 git init
-git add --all
-git commit -m "Initial Commit"
-git remote add origin ssh://git@ncct-bitbucket.epa.gov:7999/sig/signaturemaker.git
-git push -u origin master
-
-https://ncct-bitbucket.epa.gov/projects/SIG/repos/signaturemaker/browse
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/richardjudson/signatureMaker.git
+git push -u origin main
 
 Pointing to pdflatex ...
 

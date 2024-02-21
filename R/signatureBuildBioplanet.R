@@ -7,7 +7,7 @@
 signatureBuildBioplanet <- function(){
   printCurrentFunction()
 
-  file <- "../input/signatures/bioplanet_PATHWAYS.RData"
+  file <- "data/signatures/bioplanet_PATHWAYS.RData"
   load(file)
 
   mat <- bioplanet_PATHWAYS
@@ -22,6 +22,6 @@ signatureBuildBioplanet <- function(){
   mat <- mat[,name.list]
 
   Bioplanet_signatures <- mat
-  file <- "../input/signatures/Bioplanet_signatures.RData"
+  file <- "data/signatures/Bioplanet_signatures.RData"
   save(Bioplanet_signatures,file=file)
 }

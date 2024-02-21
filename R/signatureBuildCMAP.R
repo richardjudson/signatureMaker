@@ -7,7 +7,7 @@
 signatureBuildCMAP <- function(){
   printCurrentFunction()
 
-  file <- "../input/signatures/cmap-sig-2019-11-06-a.tsv"
+  file <- "data/signatures/cmap-sig-2019-11-06-a.tsv"
   mat <- read.table(file,header=T,sep="\t",quote="",stringsAsFactors=F)
   x <- paste("CMAP",mat[,3],mat[,5],mat[,6])
   mat[,1] <- x
@@ -49,6 +49,6 @@ signatureBuildCMAP <- function(){
 
   mat <- mat[order(mat$signature),]
   CMAP_signatures <- mat
-  file <- "../input/signatures/CMAP_signatures.RData"
+  file <- "data/signatures/CMAP_signatures.RData"
   save(CMAP_signatures,file=file)
 }

@@ -1,4 +1,4 @@
-library(qusage)
+#library(qusage)
 #--------------------------------------------------------------------------------------
 #' Build the standard input file for the stress signatures from Bryan Chambers
 #'
@@ -8,7 +8,7 @@ library(qusage)
 signatureBuildStress <- function(){
   printCurrentFunction()
 
-  file ="../input/Stress/complete.SRP.consigs-2021.02.17.gmt"
+  file ="data/Stress/complete.SRP.consigs-2021.02.17.gmt"
   temp = read.gmt(file)
   nsig = length(temp)
   name.list = c("signature","parent","source","type","direction","description","subsource","ngene","gene.list")
@@ -31,6 +31,6 @@ signatureBuildStress <- function(){
   }
 
   Stress_signatures = mat
-  file = "../input/Stress/Stress_signatures.RData"
+  file = "data/Stress/Stress_signatures.RData"
   save(Stress_signatures,file=file)
 }

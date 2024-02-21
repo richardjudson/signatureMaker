@@ -1,4 +1,4 @@
-library(qusage)
+#library(qusage)
 #--------------------------------------------------------------------------------------
 #' Build the standard input file for the stress signatures from Bryan Chambers
 #'
@@ -8,7 +8,7 @@ library(qusage)
 signatureBuildCho <- function(){
   printCurrentFunction()
 
-  file ="../input/Cho/Cho DNA Damage Biomarker.xlsx"
+  file ="data/Cho/Cho DNA Damage Biomarker.xlsx"
   temp = read.xlsx(file)
   genes = temp[,1]
   nsig = length(temp)
@@ -27,6 +27,6 @@ signatureBuildCho <- function(){
   mat[1,"gene.list"] = gene.list
 
   Cho_signatures = mat
-  file = "../input/Cho/Cho_signatures.RData"
+  file = "data/Cho/Cho_signatures.RData"
   save(Cho_signatures,file=file)
 }

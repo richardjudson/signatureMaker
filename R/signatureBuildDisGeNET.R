@@ -7,7 +7,7 @@
 signatureBuildDisGeNET <- function(){
   printCurrentFunction()
 
-  file <- "../input/signatures/DisGeNET/gene_disease_raw.txt"
+  file <- "data/signatures/DisGeNET/gene_disease_raw.txt"
   temp <- readLines(file)
   cat("File read in\n")
   geneid.list <- NULL
@@ -47,13 +47,13 @@ signatureBuildDisGeNET <- function(){
   cat("file processed\n")
 
   if(!exists("HUMAN.GENES")) {
-    file <- "../input/signatures/DisGeNET/gene_info_human.txt"
+    file <- "data/signatures/DisGeNET/gene_info_human.txt"
     gi <- read.table(file,header=F,stringsAsFactors=F,sep="\t",comment="",quote="")
     gi <- gi[gi[,1]==9606,]
     gi <- gi[,c(2:3)]
     names(gi) <- c("geneid","symbol")
     HUMAN.GENES <<- gi
-    file <- "../input/signatures/DisGeNET/human_genes.xlsx"
+    file <- "data/signatures/DisGeNET/human_genes.xlsx"
     write.xlsx(HUMAN.GENES,file)
   }
   names(mat) <- c("geneid","disease")
@@ -86,6 +86,6 @@ signatureBuildDisGeNET <- function(){
   }
   cat("final data frame created\n")
   DisGeNET_signatures <- mat
-  file <- "../input/signatures/DisGeNET_signatures.RData"
+  file <- "data/signatures/DisGeNET_signatures.RData"
   save(DisGeNET_signatures,file=file)
 }

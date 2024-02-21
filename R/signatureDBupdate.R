@@ -10,26 +10,26 @@ library(openxlsx)
 signatureDBupdate = function(do.save=F){
   printCurrentFunction()
 
-  file = "../input/signatureDB.RData"
+  file = "data/signatureDB.RData"
   load(file=file)
   sigdb.old = sigdb
   cat("old signatures (1):",nrow(sigdb.old),"\n")
-  file = paste0("../input/saved_versions/signatureDB_",Sys.Date(),".RData")
+  file = paste0("data/saved_versions/signatureDB_",Sys.Date(),".RData")
   if(do.save) save(sigdb,file=file)
 
-  file <- paste0("../input/signatureDB_genelists.RData")
+  file <- paste0("data/signatureDB_genelists.RData")
   load(file=file)
   genelists.old = genelists
   cat("old signatures (2):",length(genelists.old),"\n")
-  file = paste0("../input/saved_versions/signatureDB_genelists_",Sys.Date(),".RData")
+  file = paste0("data/saved_versions/signatureDB_genelists_",Sys.Date(),".RData")
   if(do.save) save(genelists,file=file)
 
-  file = "../input/signatureDB_no_rand.RData"
+  file = "data/signatureDB_no_rand.RData"
   load(file=file)
   sigdb.new = sigdb
   cat("new signatures (1):",nrow(sigdb.new),"\n")
 
-  file <- paste0("../input/signatureDB_genelists_no_rand.RData")
+  file <- paste0("data/signatureDB_genelists_no_rand.RData")
   load(file=file)
   genelists.new = genelists
   cat("new signatures (2):",length(genelists.new),"\n")
@@ -37,13 +37,13 @@ signatureDBupdate = function(do.save=F){
   delta = genelists.new[!is.element(genelists.new,genelists.old)]
   genelists = c(genelists.old,delta)
   cat("final signatures (1):",length(genelists),"\n")
-  file = paste0("../input/signatureDB_genelists.RData")
+  file = paste0("data/signatureDB_genelists.RData")
   if(do.save) save(genelists,file=file)
 
   delta = sigdb.new[!is.element(sigdb.new$signature,sigdb.old$signature),]
   sigdb = rbind(sigdb.old,delta)
   cat("final signatures (2):",nrow(sigdb),"\n")
-  file = paste0("../input/signatureDB.RData")
+  file = paste0("data/signatureDB.RData")
   if(do.save) save(sigdb,file=file)
   else browser()
 }

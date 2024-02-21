@@ -7,7 +7,7 @@
 signatureBuildMsigDB <- function(){
   printCurrentFunction()
 
-  file <- "../input/signatures/msigdb_PATHWAYS.RData"
+  file <- "data/signatures/msigdb_PATHWAYS.RData"
   load(file)
 
   mat <- msigdb_PATHWAYS
@@ -95,6 +95,6 @@ signatureBuildMsigDB <- function(){
   mat <- rbind(mat.bid,mat.non)
   mat <- mat[order(mat$signature),]
   MsigDB_signatures <- mat
-  file <- "../input/signatures/MsigDB_signatures.RData"
+  file <- "data/signatures/MsigDB_signatures.RData"
   save(MsigDB_signatures,file=file)
 }

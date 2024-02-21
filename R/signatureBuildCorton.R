@@ -7,7 +7,7 @@
 signatureBuildCorton <- function(){
   printCurrentFunction()
 
-  file ="../input/Corton/ER_Biomarker_TempoSeq_Corton.xlsx"
+  file ="data/Corton/ER_Biomarker_TempoSeq_Corton.xlsx"
   temp = read.xlsx(file)
   name.list = c("signature","parent","source","type","direction","description","subsource","ngene","gene.list")
   mat = as.data.frame(matrix(nrow=1,ncol=length(name.list)))
@@ -25,6 +25,6 @@ signatureBuildCorton <- function(){
   mat[1,"gene.list"] <- gene.list
 
   Corton_signatures = mat
-  file = "../input/Corton/Corton_signatures.RData"
+  file = "data/Corton/Corton_signatures.RData"
   save(Corton_signatures,file=file)
 }

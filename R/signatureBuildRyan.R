@@ -7,7 +7,7 @@
 signatureBuildRyan <- function(){
   printCurrentFunction()
 
-  file <- "../input/signatures/RYAN_PATHWAYS.RData"
+  file <- "data/signatures/RYAN_PATHWAYS.RData"
   load(file)
   mat <- RYAN_PATHWAYS
   mat[1,"pathway"] <- "RYAN_ESTROGEN_RECEPTOR_ALPHA_up"
@@ -22,6 +22,6 @@ signatureBuildRyan <- function(){
   name.list <- c("signature","parent","source","type","direction","description","subsource","ngene","gene.list")
   mat <- mat[,name.list]
   Ryan_signatures <- mat
-  file <- "../input/signatures/Ryan_signatures.RData"
+  file <- "data/signatures/Ryan_signatures.RData"
   save(Ryan_signatures,file=file)
 }

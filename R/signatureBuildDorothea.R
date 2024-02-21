@@ -7,7 +7,7 @@
 signatureBuildDorothea <- function(){
   printCurrentFunction()
 
-  file ="../input/Dorothea/Dorothea.RData"
+  file ="data/Dorothea/Dorothea.RData"
   load(file=file)
   temp = DOROTHEA
   temp = temp[is.element(temp$confidence,c("A","B","C")),]
@@ -51,6 +51,6 @@ signatureBuildDorothea <- function(){
   mat = mat[mat$ngene>=20,]
   Dorothea_signatures = mat
   browser()
-  file = "../input/Dorothea/Dorothea_signatures.RData"
+  file = "data/Dorothea/Dorothea_signatures.RData"
   save(Dorothea_signatures,file=file)
 }

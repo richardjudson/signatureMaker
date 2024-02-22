@@ -4,10 +4,18 @@ Title: Build Signature Files for the httrpathway package
 Version: 0.1.0
 Author: Ricahrd Judson
 Maintainer: Richard Judson <judson.richard@epa.gov>
-Description: Formats teh input signature files into 3 main outputs
+Description: Formats the input signature files into 3 main outputs
     catalog
-    list of list
+    list of gene lists
     list of pipe-delimited gene lists.
+    The main functions are signatureBuilder.v2() and signatureBuilderRandom().
+    The first function reads in files for each ofthe sources and combines them
+    to build the signarure RData files with gene lists, and the catalog. The second
+    builds the random signatures and adds these to the catalog. Each signature
+    source has its own function to put data into teh proper format. To add a new
+    source, copy one of these and format your new data in the proper way. The
+    function signatureDBupdate() saves the current signature files into the
+    folder saved_versions. This is jsut a safety measure.
 Imports: stats,
   stringr,
   grDevices,
@@ -31,7 +39,7 @@ Imports: stats,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.3.1
 Suggests: 
     knitr,
     rmarkdown

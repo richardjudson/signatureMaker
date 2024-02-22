@@ -1,13 +1,10 @@
 library(openxlsx)
 #--------------------------------------------------------------------------------------
-#' Create the files needed for the signature calculations before adding random genes
-#'
-#' @param min.ngene Signatures will only be saved if the number of genes is >= this value
-#' @param max.ngene Signatures will only be saved if the number of genes is <= this value
+#' Save the current set of signatures before rebuilding
 #' @return No output.
 #' @export
 #--------------------------------------------------------------------------------------
-signatureDBupdate = function(do.save=F){
+signatureDBupdate = function(do.save=T){
   printCurrentFunction()
 
   file = "data/signatureDB.RData"

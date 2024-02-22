@@ -7,7 +7,7 @@ library(openxlsx)
 #' @return No output.
 #' @export
 #--------------------------------------------------------------------------------------
-signatureBuilder = function(min.ngene=10,max.ngene=100000){
+signatureBuilder.v2 = function(min.ngene=10,max.ngene=100000){
   printCurrentFunction()
 
   load("data/MsigDB/MsigDB_signatures.RData")
@@ -34,11 +34,11 @@ signatureBuilder = function(min.ngene=10,max.ngene=100000){
 
   sigdb <- sigdb[,name.list]
 
-  x <- temp$signature
-  y <- sigdb$signature
-  z <- x[is.element(x,y)]
-  temp <- temp[!is.element(temp$signature,z),]
-  sigdb <- rbind(sigdb,temp)
+  # x <- temp$signature
+  # y <- sigdb$signature
+  # z <- x[is.element(x,y)]
+  # temp <- temp[!is.element(temp$signature,z),]
+  # sigdb <- rbind(sigdb,temp)
   rownames(sigdb) <- sigdb$signature
 
   genelists = strsplit(sigdb$gene.list, "\\|")

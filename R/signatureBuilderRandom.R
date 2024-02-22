@@ -10,13 +10,13 @@ library(parallel)
 signatureBuilderRandom = function(nrandom=1000,mc.cores=1){
   printCurrentFunction()
 
-  file <- paste0("data/signatures/signatureDB_genelists no rand.RData")
+  file <- paste0("data/signatureDB_genelists_no_rand.RData")
   load(file=file)
   # genelists
 
-  file <- paste0("data/signatures/signatureDB_master_catalog no rand.xlsx")
+  file <- paste0("data/signatureDB_master_catalog_no_rand.xlsx")
   catalog <- read.xlsx(file)
-  file <- "data/signatures/signatureDB no rand.RData"
+  file <- "data/signatureDB_no_rand.RData"
   load(file=file)
   #sigdb
   temp <- sigdb[sigdb$ngene<=500,]
@@ -65,9 +65,9 @@ signatureBuilderRandom = function(nrandom=1000,mc.cores=1){
   cat("> length of gene lists:",length(genelists),"\n")
   names(genelists) = sigdb$signature
 
-  file <- "data/signatures/signatureDB.RData"
+  file <- "data/signatureDB.RData"
   save(sigdb,file=file)
-  file <- paste0("data/signatures/signatureDB_genelists.RData")
+  file <- paste0("data/signatureDB_genelists.RData")
   save(genelists,file=file)
   rcatalog <- sigdb[is.element(sigdb$source,"Random"),1:8]
   rcatalog$target_class <- "Random"
@@ -80,7 +80,7 @@ signatureBuilderRandom = function(nrandom=1000,mc.cores=1){
   rcatalog$set5 <- 0
   catalog <- rbind(catalog,rcatalog)
   cat("> new catalog created:",nrow(catalog),"\n")
-  file <- paste0("data/signatures/signatureDB_master_catalog.xlsx")
+  file <- paste0("data/signatureDB_master_catalog.xlsx")
   write.xlsx(catalog,file)
   cat("> file written out\n")
 }

@@ -48,12 +48,34 @@ signatureBuilder.v2 = function(min.ngene=10,max.ngene=100000){
   catalog <- sigdb[,1:8]
   catalog$target_class <- "-"
   catalog$super_target <- "-"
+  catalog$gene_target <- "-"
+  catalog$effect_direction <- "-"
+  catalog$super_target_level <- "-"
+
   catalog$include0 <- 1
   catalog$set1 <- 0
   catalog$set2 <- 0
   catalog$set3 <- 0
   catalog$set4 <- 0
   catalog$set5 <- 0
+
+  file <- "data/signatureDB manual annotations.xlsx"
+  annot <- read.xlsx(file)
+  x = annot$parent
+  y = x[duplicated(x)]
+  if(length(y)>0) {
+    cat("Duplicated entries in the manual annotation file need to be eliminated\n")
+    print(y)
+    browser()
+  }
+  rownames(annot) = annot$parent
+  for(i in 1:nrow(annot)) {
+    parent = annot[i,"parent"]
+    catalog[catalog$parent==parent,"super_target"] = annot[i,"super_target"]
+    catalog[catalog$parent==parent,"gene_target"] = annot[i,"gene_target"]
+    catalog[catalog$parent==parent,"effect_direction"] = annot[i,"effect_direction"]
+    catalog[catalog$parent==parent,"super_target_level"] = annot[i,"super_target_level"]
+  }
 
   file <- "data/CMAP/CMAP refchemdb output.xlsx"
   refchem <- read.xlsx(file)

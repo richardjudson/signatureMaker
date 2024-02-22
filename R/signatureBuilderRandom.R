@@ -72,6 +72,9 @@ signatureBuilderRandom = function(nrandom=1000,mc.cores=1){
   rcatalog <- sigdb[is.element(sigdb$source,"Random"),1:8]
   rcatalog$target_class <- "Random"
   rcatalog$super_target <- "Random"
+  rcatalog$gene_target <- "Random"
+  rcatalog$effect_direction <- "-"
+  rcatalog$super_target_level <- "Random"
   rcatalog$include0 <- 1
   rcatalog$set1 <- 0
   rcatalog$set2 <- 0

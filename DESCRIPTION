@@ -15,7 +15,10 @@ Description: Formats the input signature files into 3 main outputs
     source has its own function to put data into teh proper format. To add a new
     source, copy one of these and format your new data in the proper way. The
     function signatureDBupdate() saves the current signature files into the
-    folder saved_versions. This is jsut a safety measure.
+    folder saved_versions. This is just a safety measure. The signature catalog
+    has seevral hand annotated fields (e.g. super_target and gene_target). These are added to the 
+    file signatureDB manual annotations.xlsx and these are added during the catalog building
+    process.
 Imports: stats,
   stringr,
   grDevices,
